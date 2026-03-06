@@ -16,6 +16,8 @@ class Plugin {
         add_action( 'init', [ Product_Post_Type::class, 'register' ] );
 		add_action( 'init', [ Target_Group_Taxonomy::class, 'register' ] );
 		add_action( 'init', [ Product_Meta::class, 'register' ] );
+
+		Product_Admin::init();
 	}
 
 	/**
