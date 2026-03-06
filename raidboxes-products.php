@@ -20,6 +20,8 @@ require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-plugin.php';
 require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-activation.php';
 require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-target-group-taxonomy.php';
 require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-product-post-type.php';
+require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-product-meta.php';
+
 
 register_activation_hook( __FILE__, [ 'RB_Products\\Activation', 'activate' ] );
 
