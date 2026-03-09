@@ -10,7 +10,7 @@ class Product_Meta {
 
 	public static function register() {
 		$string_fields = [
-			            'product_price',
+			'product_price',
 			'product_cpu',
 			'product_ram',
 			'product_ssd',
