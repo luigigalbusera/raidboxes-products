@@ -11,16 +11,19 @@ class Plugin {
 	/**
 	 * Initialize the plugin
 	 */
+
 	public static function init() {
         add_action( 'init', [ Product_Post_Type::class, 'register' ] );
 		add_action( 'init', [ Target_Group_Taxonomy::class, 'register' ] );
+		add_action( 'init', [ Product_Meta::class, 'register' ] );
+
+		Product_Admin::init();
 	}
 
 	/**
 	 * Runs on WordPress init hook
 	 */
 	public static function on_init() {
-		// For now just log a messagevv
 		error_log( 'Raidboxes Products plugin loaded' );
 	}
 

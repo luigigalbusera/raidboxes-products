@@ -14,9 +14,9 @@ class Target_Group_Taxonomy {
 			[ 'product' ],
 			[
 				'labels' => [
-					'name'          => __( 'Target Groups', 'raidboxes-products' ),
+					'name'			=> __( 'Target Groups', 'raidboxes-products' ),
 					'singular_name' => __( 'Target Group', 'raidboxes-products' ),
-					'menu_name'     => __( 'Target Groups', 'raidboxes-products' ),
+					'menu_name'		=> __( 'Target Groups', 'raidboxes-products' ),
 					'all_items'     => __( 'All Target Groups', 'raidboxes-products' ),
 					'edit_item'     => __( 'Edit Target Group', 'raidboxes-products' ),
 					'add_new_item'  => __( 'Add New Target Group', 'raidboxes-products' ),
