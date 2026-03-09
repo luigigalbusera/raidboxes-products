@@ -11,7 +11,7 @@ class Target_Group_Taxonomy {
 	public static function register() {
 		register_taxonomy(
 			'target_group',
-			[ 'product' ],
+			[ 'rb_product' ],
 			[
 				'labels' => [
 					'name'			=> __( 'Target Groups', 'raidboxes-products' ),

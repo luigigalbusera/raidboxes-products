@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Product_Post_Type {
 
 	public static function register() {
-
+		//slug rb_product
 		register_post_type(
-			'product',
+			'rb_product',
 			[
 				'labels' => [
 					'name'          => __( 'Products', 'raidboxes-products' ),

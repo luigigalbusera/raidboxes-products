@@ -20,7 +20,7 @@ class Product_Meta {
 
 		foreach ( $string_fields as $field ) {
 			register_post_meta(
-				'product',
+				'rb_product',
 				$field,
 				[
 					'single'            => true,
@@ -33,7 +33,7 @@ class Product_Meta {
 		}
 
 		register_post_meta(
-			'product',
+			'rb_product',
 			'product_features',
 			[
 				'single'            => true,

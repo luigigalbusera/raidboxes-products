@@ -1,3 +1,48 @@
-.wp-block-create-block-products-carousel {
-	border: 1px dotted red;
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/products-carousel/editor.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.products-carousel-editor {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+}
+.products-carousel-editor__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  font-size: 12px;
+}
+.products-carousel-editor__card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1rem;
+}
+.products-carousel-editor__title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+.products-carousel-editor__meta {
+  font-size: 13px;
+  margin-top: 4px;
+}
+.products-carousel-editor__meta strong {
+  font-weight: 800;
+}
+.products-carousel-editor__features {
+  list-style: disc;
+  margin: 4px 16px 0 0;
+  padding: 0;
+  font-size: 12px;
+}
+.products-carousel-editor__features li {
+  margin: 2px 0;
 }
