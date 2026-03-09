@@ -2,6 +2,7 @@
 
 namespace RB_Products;
 
+//Run from Wordpress
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
