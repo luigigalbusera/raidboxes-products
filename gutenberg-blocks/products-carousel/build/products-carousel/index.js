@@ -43,6 +43,8 @@ function Edit({
   const [groups, setGroups] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
   const [items, setItems] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+
+  //Set the groups
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
       path: "/products-carousel/v1/target-groups"
@@ -52,9 +54,12 @@ function Edit({
         value: term.slug
       })));
     }).catch(() => {
+      console.error("Error loading target groups:", error);
       setGroups([]);
     });
   }, []);
+
+  //Set the items based on the Target
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     setLoading(true);
     const path = targetGroup ? `/products-carousel/v1/items?target_group=${encodeURIComponent(targetGroup)}` : "/products-carousel/v1/items";
@@ -63,8 +68,10 @@ function Edit({
     }).then(response => {
       setItems(response || []);
     }).catch(() => {
+      console.error("Items API error:", error);
       setItems([]);
     }).finally(() => {
+      console.log("Loading finished");
       setLoading(false);
     });
   }, [targetGroup]);

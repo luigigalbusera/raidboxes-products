@@ -21,6 +21,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const [items, setItems] = useState([]);
 	const [loading, setLoading] = useState(false);
 
+	//Set the groups
 	useEffect(() => {
 		apiFetch({ path: "/products-carousel/v1/target-groups" })
 			.then((response) => {
@@ -32,10 +33,12 @@ export default function Edit({ attributes, setAttributes }) {
 				);
 			})
 			.catch(() => {
+				console.error("Error loading target groups:", error);
 				setGroups([]);
 			});
 	}, []);
 
+	//Set the items based on the Target
 	useEffect(() => {
 		setLoading(true);
 		const path = targetGroup
@@ -49,9 +52,11 @@ export default function Edit({ attributes, setAttributes }) {
 				setItems(response || []);
 			})
 			.catch(() => {
+				console.error("Items API error:", error);
 				setItems([]);
 			})
 			.finally(() => {
+				console.log("Loading finished");
 				setLoading(false);
 			});
 	}, [targetGroup]);
