@@ -20,11 +20,7 @@ class Plugin {
 		add_action( 'init', [ Target_Group_Taxonomy::class, 'register' ] );
 		add_action( 'init', [ Product_Meta::class, 'register' ] );
 		add_action( 'init', [ __CLASS__, 'register_block' ] );
-
-		
-
 		add_action( 'rest_api_init', [ __CLASS__, 'register_rest_routes' ] );
-
 		Product_Admin::init();
 	}
 
