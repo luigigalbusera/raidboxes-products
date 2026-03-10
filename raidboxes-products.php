@@ -23,6 +23,8 @@ require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-product-post-type.php';
 require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-product-meta.php';
 require_once RB_PRODUCTS_PLUGIN_PATH . 'includes/class-product-admin.php';
 
-register_activation_hook( __FILE__, [ 'RB_Products\\Activation', 'activate' ] );
 
+//for debugging 
+register_activation_hook( __FILE__, [ 'RB_Products\\Activation', 'activate' ] );
+//initiation of the plugin
 RB_Products\Plugin::init();

@@ -10,7 +10,7 @@ class Product_Admin {
 
 	public static function init() {
 		add_action( 'add_meta_boxes', [ __CLASS__, 'add_meta_box' ] );
-		add_action( 'save_post_product', [ __CLASS__, 'save_meta_box' ] );
+		add_action( 'save_post_rb_product', [ __CLASS__, 'save_meta_box' ] );
 	}
 
 	public static function add_meta_box() {
@@ -18,7 +18,7 @@ class Product_Admin {
 			'rb_product_details',
 			__( 'Product Details', 'raidboxes-products' ),
 			[ __CLASS__, 'render_meta_box' ],
-			'product',
+			'rb_product',
 			'normal',
 			'default'
 		);

@@ -1,0 +1,69 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.products-carousel-editor__header {
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+.wp-block-create-block-products-carousel {
+	background: transparent;
+	padding: 24px 0;
+}
+
+.products-carousel-editor {
+	color: #0f172a;
+	margin: 0 auto;
+	border-radius: 20px;
+	box-sizing: border-box;
+}
+
+.products-carousel-editor__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+	font-size: 13px;
+}
+
+.products-carousel-editor__card {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	overflow: hidden;
+	padding: 20px;
+	box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+}
+
+.products-carousel-editor__title {
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 5px;
+	color: #0f172a;
+}
+
+.products-carousel-editor__meta {
+	font-size: 13px;
+	color: #475569;
+	margin-top: 5px;
+}
+
+.products-carousel-editor__meta strong {
+	display: inline-block;
+	font-weight: 700;
+	color: #0f172a;
+	margin-right: 6px;
+}
+
+.products-carousel-editor__features {
+	list-style: disc;
+	margin: 8px 0 0 18px;
+	padding: 0;
+	color: #334155;
+}
+
+.products-carousel-editor__features li {
+	margin: 4px 0;
+	line-height: 1.5;
+}
