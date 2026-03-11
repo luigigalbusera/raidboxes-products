@@ -3,6 +3,7 @@ import { Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "./product-card.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
 	const blocks = document.querySelectorAll(".products-carousel");
@@ -25,7 +26,10 @@ function buildCard(product) {
 	<div class="swiper-slide">
 		<div class="product-card">
 			<h3>${product.title}</h3>
-			<p><strong>Price:</strong> ${product.price}</p>
+			<div class="product-price">
+				<p>${product.price} €</p>
+				<p>per month</p>
+			</div>
 			<p><strong>CPU:</strong> ${product.cpu}</p>
 			<p><strong>RAM:</strong> ${product.ram}</p>
 			<p><strong>SSD:</strong> ${product.ssd}</p>
@@ -57,8 +61,8 @@ async function initCarousel(block) {
 		spaceBetween: 16,
 
 		navigation: {
-			nextEl: block.querySelector(".swiper-button-next"),
-			prevEl: block.querySelector(".swiper-button-prev"),
+			nextEl: block.querySelector(".swiper-arrow-next"),
+			prevEl: block.querySelector(".swiper-arrow-prev"),
 		},
 
 		breakpoints: {

@@ -16,12 +16,13 @@ $target_group = isset( $attributes['targetGroup'] ) ? $attributes['targetGroup']
 	data-target-group="<?php echo esc_attr( $target_group ); ?>"
 	data-endpoint="<?php echo esc_url( rest_url( 'products-carousel/v1/items' ) ); ?>"
 >
-
-	<div class="swiper">
-		<div class="swiper-wrapper"></div>
-
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
+	<div class="carousel-shell">
+		<div class="swiper">
+			<div class="swiper-wrapper"></div>
+		</div>
+		<div class="swiper-navigation-buttons">
+			<button class="swiper-arrow-prev" aria-label="Previous"></button>
+			<button class="swiper-arrow-next" aria-label="Next"></button>
+		</div>
 	</div>
-
 </div>
