@@ -122,25 +122,58 @@
 		outline: none;
 	}
 
-	// Active Slide
-	.swiper-slide-next .product-card {
-		background-color: v.$color-rb-primary;
-		color: v.$color-rb-white;
-		z-index: 2;
+	//PAGINATION
+	.swiper-pagination {
+		display: none;
+		position: static;
+		margin-top: 24px;
+		text-align: center;
 	}
 
-	.swiper-slide-next .product-card h3,
-	.swiper-slide-next .product-card p,
-	.swiper-slide-next .product-card li,
-	.swiper-slide-next .product-card strong {
-		color: v.$color-rb-white;
+	.swiper-pagination-bullet {
+		width: 10px;
+		height: 10px;
+		background: v.$color-rb-accent-light;
+		opacity: 1;
 	}
 
-	.swiper-slide-next .product-price {
-		border-color: v.$color-rb-white;
+	.swiper-pagination-bullet-active {
+		background: v.$color-rb-secondary;
 	}
 
-	.swiper-slide-next .product-price p:nth-child(1) {
-		color: v.$color-rb-accent-green !important;
+	/* TABLET */
+	@media (max-width: 1023px) {
+		.carousel-shell {
+			padding: 0 56px;
+		}
+	}
+
+	/* MOBILE */
+	@media (max-width: 767px) {
+		.carousel-shell {
+			padding: 0;
+		}
+
+		.swiper-navigation-buttons {
+			display: none;
+		}
+
+		.swiper-pagination {
+			display: block;
+		}
+		//NO difference between active and inactive slides on mobile
+		.swiper-slide-active,
+		.swiper-slide-prev,
+		.swiper-slide-next {
+			transform: none;
+			opacity: 1;
+		}
+
+		.swiper-slide-active .product-card,
+		.swiper-slide-prev .product-card,
+		.swiper-slide-next .product-card {
+			transform: none;
+			opacity: 1;
+		}
 	}
 }

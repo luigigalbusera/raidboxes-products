@@ -14,6 +14,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
+/***/ "./node_modules/swiper/modules/pagination.css"
+/*!****************************************************!*\
+  !*** ./node_modules/swiper/modules/pagination.css ***!
+  \****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ },
+
 /***/ "./node_modules/swiper/swiper.css"
 /*!****************************************!*\
   !*** ./node_modules/swiper/swiper.css ***!
@@ -10657,7 +10669,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.css");
 /* harmony import */ var swiper_css_navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/css/navigation */ "./node_modules/swiper/modules/navigation.css");
-/* harmony import */ var _product_card_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./product-card.scss */ "./src/products-carousel/product-card.scss");
+/* harmony import */ var swiper_css_pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/css/pagination */ "./node_modules/swiper/modules/pagination.css");
+/* harmony import */ var _product_card_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./product-card.scss */ "./src/products-carousel/product-card.scss");
+
 
 
 
@@ -10676,6 +10690,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function buildCard(product) {
   //features as a <li> elements
   const features = product.features ? product.features.map(f => `<li>${f}</li>`).join("") : "";
+  const ctaLabel = product.cta_label || "Get started";
+  const ctaUrl = product.cta_url || "#";
   return `
 	<div class="swiper-slide">
 		<div class="product-card">
@@ -10688,6 +10704,11 @@ function buildCard(product) {
 			<p><strong>RAM:</strong> ${product.ram}</p>
 			<p><strong>SSD:</strong> ${product.ssd}</p>
 			<ul>${features}</ul>
+
+			<a href="${ctaUrl}" class="product-cta">
+				${ctaLabel}
+			</a>
+
 		</div>
 	</div>
 	`;
@@ -10704,12 +10725,16 @@ async function initCarousel(block) {
   const wrapper = block.querySelector(".swiper-wrapper");
   wrapper.innerHTML = products.map(buildCard).join("");
   new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](block.querySelector(".swiper"), {
-    modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation],
+    modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination],
     slidesPerView: 1,
     spaceBetween: 16,
     navigation: {
       nextEl: block.querySelector(".swiper-arrow-next"),
       prevEl: block.querySelector(".swiper-arrow-prev")
+    },
+    pagination: {
+      el: block.querySelector(".swiper-pagination"),
+      clickable: true
     },
     breakpoints: {
       768: {

@@ -1,8 +1,9 @@
 import Swiper from "swiper";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "./product-card.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,6 +23,9 @@ function buildCard(product) {
 		? product.features.map((f) => `<li>${f}</li>`).join("")
 		: "";
 
+	const ctaLabel = product.cta_label || "Get started";
+	const ctaUrl = product.cta_url || "#";
+
 	return `
 	<div class="swiper-slide">
 		<div class="product-card">
@@ -34,6 +38,11 @@ function buildCard(product) {
 			<p><strong>RAM:</strong> ${product.ram}</p>
 			<p><strong>SSD:</strong> ${product.ssd}</p>
 			<ul>${features}</ul>
+
+			<a href="${ctaUrl}" class="product-cta">
+				${ctaLabel}
+			</a>
+
 		</div>
 	</div>
 	`;
@@ -55,7 +64,7 @@ async function initCarousel(block) {
 	wrapper.innerHTML = products.map(buildCard).join("");
 
 	new Swiper(block.querySelector(".swiper"), {
-		modules: [Navigation],
+		modules: [Navigation, Pagination],
 
 		slidesPerView: 1,
 		spaceBetween: 16,
@@ -63,6 +72,11 @@ async function initCarousel(block) {
 		navigation: {
 			nextEl: block.querySelector(".swiper-arrow-next"),
 			prevEl: block.querySelector(".swiper-arrow-prev"),
+		},
+
+		pagination: {
+			el: block.querySelector(".swiper-pagination"),
+			clickable: true,
 		},
 
 		breakpoints: {

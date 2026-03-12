@@ -54,7 +54,7 @@
 }
 
 .product-card ul {
-	margin: 12px 0 0 0;
+	margin: 12px 0 24px 0;
 	padding: 0;
 	list-style: none;
 	display: flex;
@@ -82,4 +82,70 @@
 
 	transform: rotate(45deg);
 	flex-shrink: 0;
+}
+
+// Active Slide
+.swiper-slide-next .product-card {
+	background-color: v.$color-rb-primary;
+	color: v.$color-rb-white;
+	z-index: 2;
+}
+
+.swiper-slide-next .product-card h3,
+.swiper-slide-next .product-card p,
+.swiper-slide-next .product-card li,
+.swiper-slide-next .product-card strong {
+	color: v.$color-rb-white;
+}
+
+.swiper-slide-next .product-price {
+	border-color: v.$color-rb-white;
+}
+
+.swiper-slide-next .product-price p:nth-child(1) {
+	color: v.$color-rb-accent-green !important;
+}
+
+.swiper-slide-next .product-cta {
+	background: v.$color-rb-accent-green;
+	color: v.$color-rb-primary;
+	border-color: v.$color-rb-accent-green;
+}
+
+.swiper-slide-next .product-cta:hover {
+	background: v.$color-rb-white;
+	color: v.$color-rb-primary;
+	box-shadow: -6px 6px 0 v.$color-rb-accent-green;
+}
+
+//product-cta button
+.product-cta {
+	margin-top: auto;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	height: 64px;
+
+	background: v.$color-rb-primary;
+	color: v.$color-rb-white;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 16px;
+
+	border: 2px solid v.$color-rb-primary;
+
+	transition:
+		box-shadow 0.2s ease,
+		transform 0.2s ease,
+		background 0.2s ease,
+		color 0.2s ease;
+}
+
+.product-cta:hover {
+	background: v.$color-rb-white;
+	color: v.$color-rb-primary;
+	box-shadow: -6px 6px 0 v.$color-rb-primary; // ← sinistra + basso
 }

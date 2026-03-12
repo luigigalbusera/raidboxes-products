@@ -19,6 +19,8 @@ $target_group = isset( $attributes['targetGroup'] ) ? $attributes['targetGroup']
 	<div class="carousel-shell">
 		<div class="swiper">
 			<div class="swiper-wrapper"></div>
+			<div class="swiper-pagination"></div>
+
 		</div>
 		<div class="swiper-navigation-buttons">
 			<button class="swiper-arrow-prev" aria-label="Previous"></button>
