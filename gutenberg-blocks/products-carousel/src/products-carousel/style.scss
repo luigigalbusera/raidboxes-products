@@ -1,12 +1,179 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+@use "./variables" as v;
 
-.wp-block-create-block-products-carousel {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.products-carousel {
+	.carousel-shell {
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		padding: 0 80px;
+		box-sizing: border-box;
+	}
+
+	.swiper {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.swiper-wrapper {
+		display: flex;
+		align-items: stretch;
+	}
+
+	.swiper-slide {
+		height: auto;
+		display: flex;
+		box-sizing: border-box;
+		background-color: v.$color-rb-white;
+		border-color: v.$color-rb-primary;
+		border-width: 3px;
+		border-style: solid;
+	}
+
+	.product-card {
+		width: 100%;
+	}
+
+	.swiper-navigation-buttons {
+		position: absolute;
+		inset: 0;
+		z-index: 20;
+		pointer-events: none;
+	}
+
+	.swiper-arrow-prev,
+	.swiper-arrow-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 54px;
+		height: 54px;
+		display: flex;
+		align-items: center;
+		background-color: transparent;
+		border-color: transparent;
+		justify-content: center;
+		pointer-events: all;
+	}
+
+	/* ICON BASE */
+	.swiper-arrow-prev::before,
+	.swiper-arrow-next::before {
+		content: "";
+		width: 30px;
+		height: 30px;
+		display: block;
+
+		border-right: 8px solid v.$color-rb-accent-light;
+		border-bottom: 8px solid v.$color-rb-accent-light;
+		transform: scale(1);
+
+		transition:
+			transform 0.25s ease,
+			border-color 0.25s ease;
+	}
+
+	.swiper-arrow-prev:hover::before,
+	.swiper-arrow-next:hover::before {
+		border-color: v.$color-rb-secondary;
+	}
+
+	/* DIRECTION */
+	/* RIGHT */
+	.swiper-arrow-next::before {
+		transform: rotate(-45deg);
+	}
+
+	.swiper-arrow-next:hover::before {
+		transform: rotate(-45deg) scale(1.15);
+	}
+
+	/* RIGHT */
+	.swiper-arrow-next:active::before {
+		transform: rotate(-45deg) scale(1.1);
+		border-color: v.$color-rb-secondary;
+		transition: none;
+	}
+
+	/* LEFT */
+	.swiper-arrow-prev::before {
+		transform: rotate(135deg);
+	}
+
+	.swiper-arrow-prev:hover::before {
+		transform: rotate(135deg) scale(1.15);
+	}
+
+	.swiper-arrow-prev:active::before {
+		transform: rotate(135deg) scale(1.1);
+		border-color: v.$color-rb-secondary;
+		transition: none;
+	}
+
+	.swiper-arrow-prev {
+		left: 12px;
+	}
+
+	.swiper-arrow-next {
+		right: 12px;
+	}
+
+	.swiper-arrow-prev,
+	.swiper-arrow-next {
+		outline: none;
+	}
+
+	//PAGINATION
+	.swiper-pagination {
+		display: none;
+		position: static;
+		margin-top: 24px;
+		text-align: center;
+	}
+
+	.swiper-pagination-bullet {
+		width: 10px;
+		height: 10px;
+		background: v.$color-rb-accent-light;
+		opacity: 1;
+	}
+
+	.swiper-pagination-bullet-active {
+		background: v.$color-rb-secondary;
+	}
+
+	/* TABLET */
+	@media (max-width: 1023px) {
+		.carousel-shell {
+			padding: 0 56px;
+		}
+	}
+
+	/* MOBILE */
+	@media (max-width: 767px) {
+		.carousel-shell {
+			padding: 0;
+		}
+
+		.swiper-navigation-buttons {
+			display: none;
+		}
+
+		.swiper-pagination {
+			display: block;
+		}
+		//NO difference between active and inactive slides on mobile
+		.swiper-slide-active,
+		.swiper-slide-prev,
+		.swiper-slide-next {
+			transform: none;
+			opacity: 1;
+		}
+
+		.swiper-slide-active .product-card,
+		.swiper-slide-prev .product-card,
+		.swiper-slide-next .product-card {
+			transform: none;
+			opacity: 1;
+		}
+	}
 }

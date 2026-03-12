@@ -1,16 +1,161 @@
 /*!*********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/products-carousel/style.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-create-block-products-carousel {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+.products-carousel .carousel-shell {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 80px;
+  box-sizing: border-box;
+}
+.products-carousel .swiper {
+  width: 100%;
+  overflow: hidden;
+}
+.products-carousel .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+.products-carousel .swiper-slide {
+  height: auto;
+  display: flex;
+  box-sizing: border-box;
+  background-color: white;
+  border-color: #003ecd;
+  border-width: 3px;
+  border-style: solid;
+}
+.products-carousel .product-card {
+  width: 100%;
+}
+.products-carousel .swiper-navigation-buttons {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+.products-carousel .swiper-arrow-prev,
+.products-carousel .swiper-arrow-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-color: transparent;
+  justify-content: center;
+  pointer-events: all;
+}
+.products-carousel {
+  /* ICON BASE */
+}
+.products-carousel .swiper-arrow-prev::before,
+.products-carousel .swiper-arrow-next::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  border-right: 8px solid #9db5ea;
+  border-bottom: 8px solid #9db5ea;
+  transform: scale(1);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.products-carousel .swiper-arrow-prev:hover::before,
+.products-carousel .swiper-arrow-next:hover::before {
+  border-color: #ff2c86;
+}
+.products-carousel {
+  /* DIRECTION */
+  /* RIGHT */
+}
+.products-carousel .swiper-arrow-next::before {
+  transform: rotate(-45deg);
+}
+.products-carousel .swiper-arrow-next:hover::before {
+  transform: rotate(-45deg) scale(1.15);
+}
+.products-carousel {
+  /* RIGHT */
+}
+.products-carousel .swiper-arrow-next:active::before {
+  transform: rotate(-45deg) scale(1.1);
+  border-color: #ff2c86;
+  transition: none;
+}
+.products-carousel {
+  /* LEFT */
+}
+.products-carousel .swiper-arrow-prev::before {
+  transform: rotate(135deg);
+}
+.products-carousel .swiper-arrow-prev:hover::before {
+  transform: rotate(135deg) scale(1.15);
+}
+.products-carousel .swiper-arrow-prev:active::before {
+  transform: rotate(135deg) scale(1.1);
+  border-color: #ff2c86;
+  transition: none;
+}
+.products-carousel .swiper-arrow-prev {
+  left: 12px;
+}
+.products-carousel .swiper-arrow-next {
+  right: 12px;
+}
+.products-carousel .swiper-arrow-prev,
+.products-carousel .swiper-arrow-next {
+  outline: none;
+}
+.products-carousel .swiper-pagination {
+  display: none;
+  position: static;
+  margin-top: 24px;
+  text-align: center;
+}
+.products-carousel .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #9db5ea;
+  opacity: 1;
+}
+.products-carousel .swiper-pagination-bullet-active {
+  background: #ff2c86;
+}
+.products-carousel {
+  /* TABLET */
+}
+@media (max-width: 1023px) {
+  .products-carousel .carousel-shell {
+    padding: 0 56px;
+  }
+}
+.products-carousel {
+  /* MOBILE */
+}
+@media (max-width: 767px) {
+  .products-carousel .carousel-shell {
+    padding: 0;
+  }
+  .products-carousel .swiper-navigation-buttons {
+    display: none;
+  }
+  .products-carousel .swiper-pagination {
+    display: block;
+  }
+  .products-carousel .swiper-slide-active,
+  .products-carousel .swiper-slide-prev,
+  .products-carousel .swiper-slide-next {
+    transform: none;
+    opacity: 1;
+  }
+  .products-carousel .swiper-slide-active .product-card,
+  .products-carousel .swiper-slide-prev .product-card,
+  .products-carousel .swiper-slide-next .product-card {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style-index.css.map*/

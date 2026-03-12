@@ -1,25 +1,99 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
+import Swiper from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
 
-/* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-products-carousel block)' );
-/* eslint-enable no-console */
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "./product-card.scss";
+
+document.addEventListener("DOMContentLoaded", () => {
+	const blocks = document.querySelectorAll(".products-carousel");
+
+	blocks.forEach((block) => {
+		console.log("block:", block);
+		console.log("dataset:", block.dataset);
+		console.log("targetGroup:", block.dataset.targetGroup);
+	});
+});
+
+//construction of the card in an HTML
+function buildCard(product) {
+	//features as a <li> elements
+	const features = product.features
+		? product.features.map((f) => `<li>${f}</li>`).join("")
+		: "";
+
+	const ctaLabel = product.cta_label || "Get started";
+	const ctaUrl = product.cta_url || "#";
+
+	return `
+	<div class="swiper-slide">
+		<div class="product-card">
+			<h3>${product.title}</h3>
+			<div class="product-price">
+				<p>${product.price} €</p>
+				<p>per month</p>
+			</div>
+			<p><strong>CPU:</strong> ${product.cpu}</p>
+			<p><strong>RAM:</strong> ${product.ram}</p>
+			<p><strong>SSD:</strong> ${product.ssd}</p>
+			<ul>${features}</ul>
+
+			<a href="${ctaUrl}" class="product-cta">
+				${ctaLabel}
+			</a>
+
+		</div>
+	</div>
+	`;
+}
+
+async function initCarousel(block) {
+	const endpoint = block.dataset.endpoint;
+	const targetGroup = block.dataset.targetGroup;
+	const url = new URL(endpoint);
+	if (targetGroup) {
+		url.searchParams.set("target_group", targetGroup);
+	}
+
+	const response = await fetch(url);
+	const products = await response.json();
+
+	const wrapper = block.querySelector(".swiper-wrapper");
+
+	wrapper.innerHTML = products.map(buildCard).join("");
+
+	new Swiper(block.querySelector(".swiper"), {
+		modules: [Navigation, Pagination],
+
+		slidesPerView: 1,
+		spaceBetween: 16,
+
+		navigation: {
+			nextEl: block.querySelector(".swiper-arrow-next"),
+			prevEl: block.querySelector(".swiper-arrow-prev"),
+		},
+
+		pagination: {
+			el: block.querySelector(".swiper-pagination"),
+			clickable: true,
+		},
+
+		breakpoints: {
+			768: {
+				slidesPerView: 2,
+			},
+			1024: {
+				slidesPerView: 3,
+			},
+		},
+	});
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	const blocks = document.querySelectorAll(
+		".wp-block-create-block-products-carousel",
+	);
+
+	blocks.forEach(initCarousel);
+});

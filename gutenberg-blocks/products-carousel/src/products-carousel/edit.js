@@ -40,6 +40,8 @@ export default function Edit({ attributes, setAttributes }) {
 
 	//Set the items based on the Target
 	useEffect(() => {
+		console.log("Target group:", targetGroup);
+
 		setLoading(true);
 		const path = targetGroup
 			? `/products-carousel/v1/items?target_group=${encodeURIComponent(
@@ -49,6 +51,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 		apiFetch({ path })
 			.then((response) => {
+				console.log("Items response:", response);
 				setItems(response || []);
 			})
 			.catch(() => {
@@ -69,7 +72,7 @@ export default function Edit({ attributes, setAttributes }) {
 					initialOpen={true}
 				>
 					<SelectControl
-						label={__("Target group", "products-carousel")}
+						label={__("Target groups", "products-carousel")}
 						value={targetGroup}
 						options={[
 							{ label: __("All", "products-carousel"), value: "" },

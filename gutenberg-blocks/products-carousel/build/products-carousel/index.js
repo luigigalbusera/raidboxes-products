@@ -61,11 +61,13 @@ function Edit({
 
   //Set the items based on the Target
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    console.log("Target group:", targetGroup);
     setLoading(true);
     const path = targetGroup ? `/products-carousel/v1/items?target_group=${encodeURIComponent(targetGroup)}` : "/products-carousel/v1/items";
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
       path
     }).then(response => {
+      console.log("Items response:", response);
       setItems(response || []);
     }).catch(() => {
       console.error("Items API error:", error);
@@ -81,7 +83,7 @@ function Edit({
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Filter products", "products-carousel"),
         initialOpen: true,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Target group", "products-carousel"),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Target groups", "products-carousel"),
           value: targetGroup,
           options: [{
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("All", "products-carousel"),
@@ -238,33 +240,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-
-
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {Element} Element to render.
- */
-
 function save() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-    children: 'Products Carousel – hello from the saved content!'
-  });
+  return null;
 }
 
 /***/ },
@@ -369,7 +346,7 @@ module.exports = window["wp"]["i18n"];
   \******************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/products-carousel","version":"0.1.0","title":"Products Carousel","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"products-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/products-carousel","version":"0.1.0","title":"Products Carousel","category":"widgets","icon":"products","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"products-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","viewStyle":"file:./view.css","render":"file:./render.php","attributes":{"targetGroup":{"type":"string","default":""}}}');
 
 /***/ }
 

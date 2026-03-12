@@ -8,7 +8,7 @@ return array(
 		'version' => '0.1.0',
 		'title' => 'Products Carousel',
 		'category' => 'widgets',
-		'icon' => 'smiley',
+		'icon' => 'products',
 		'description' => 'Example block scaffolded with Create Block tool.',
 		'example' => array(
 			
@@ -20,6 +20,14 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'viewScript' => 'file:./view.js',
+		'viewStyle' => 'file:./view.css',
+		'render' => 'file:./render.php',
+		'attributes' => array(
+			'targetGroup' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		)
 	)
 );
