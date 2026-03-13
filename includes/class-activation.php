@@ -2,7 +2,9 @@
 
 namespace RB_Products;
 
+
 //Run from Wordpress
+//security check if the plugin is being accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }

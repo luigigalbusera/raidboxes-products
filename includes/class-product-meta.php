@@ -7,7 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Product_Meta {
-
+	/**
+	 * Registers custom meta fields for the rb_product post type
+	 */
 	public static function register() {
 		$string_fields = [
 			'product_price',

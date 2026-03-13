@@ -4,17 +4,17 @@ namespace RB_Products;
 
 use WP_Query;
 use WP_REST_Request;
-
+//security check if the plugin is being accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 class Plugin {
-
-
-	
-
-
+	/**
+	 * Initializes the plugin
+	 * Registers custom post types, taxonomies, meta fields, blocks, and REST API routes
+	 */
 	public static function init() {
 		add_action( 'init', [ Product_Post_Type::class, 'register' ] );
 		add_action( 'init', [ Target_Group_Taxonomy::class, 'register' ] );
@@ -24,6 +24,10 @@ class Plugin {
 		Product_Admin::init();
 	}
 
+	/**
+	 * Registers the Gutenberg block for the products carousel
+	 * Checks if the block.json file exists before attempting to register the block
+	*/
 	public static function register_block() {
 		if ( file_exists( RB_PRODUCTS_PLUGIN_PATH . 'gutenberg-blocks/products-carousel/build/products-carousel/block.json' ) ) {
 			error_log( 'Block JSON found' );
@@ -38,6 +42,11 @@ class Plugin {
 		error_log( 'Register block running' );
 	}
 
+	/**
+	 * Registers custom REST API routes for fetching target groups and products
+	 * The routes are publicly accessible and return data in a structured format
+	 * readme.md for more information and the endpoint documentation
+	 */
 	public static function register_rest_routes() {
 		register_rest_route(
 			'products-carousel/v1',
@@ -130,7 +139,6 @@ class Plugin {
 				'features'  => get_post_meta( $post_id, 'product_features', true ),
 			];
 		}
-
 		wp_reset_postdata();
 
 		return $items;

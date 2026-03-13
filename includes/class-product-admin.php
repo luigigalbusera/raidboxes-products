@@ -7,7 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Product_Admin {
-
+	/**
+	 * Initializes the admin functionality
+	 * Hooks into WordPress actions to add meta boxes and save post data
+	 */
 	public static function init() {
 		add_action( 'add_meta_boxes', [ __CLASS__, 'add_meta_box' ] );
 		add_action( 'save_post_rb_product', [ __CLASS__, 'save_meta_box' ] );
@@ -26,8 +29,8 @@ class Product_Admin {
 
 	public static function render_meta_box( $post ) {
 
-        // create NONCE for other Requests Creating a hidden HTML field and whemn saved prove it again. 
 		// REQUIREMENT: security
+		// - Create a nonce field in the meta box form		
 		wp_nonce_field( 'rb_product_details_nonce', 'rb_product_details_nonce' );
 
 		$price      = get_post_meta( $post->ID, 'product_price', true );
@@ -38,7 +41,6 @@ class Product_Admin {
 		$cta_label  = get_post_meta( $post->ID, 'product_cta_label', true );
 		$cta_url    = get_post_meta( $post->ID, 'product_cta_url', true );
 
-		//Feature should be an Array
 		if ( ! is_array( $features ) ) {
 			$features = [];
 		}
@@ -86,8 +88,6 @@ class Product_Admin {
 	}
 
 	public static function save_meta_box( $post_id ) {
-		
-	
 		// REQUIREMENT: Security checks
 		// - Verify nonce
 		// - Prevent saving during autosave
@@ -119,6 +119,8 @@ class Product_Admin {
 		];
 
 		//Cleaning the Values for Saving
+		// - Sanitize text fields
+		// - For the CTA URL, use esc_url_raw to ensure it's a valid URL
 		foreach ( $string_fields as $field ) {
 			if ( isset( $_POST[ $field ] ) ) {
 				$value = sanitize_text_field( wp_unslash( $_POST[ $field ] ) );
